@@ -1,0 +1,42 @@
+Task: revise the defeasible evidence for one candidate Java patch.
+
+INPUTS
+Patch metadata and claim: {{PATCH_METADATA_AND_CLAIM}}
+Allowed schemas and operators: {{ALLOWLISTS}}
+Immutable diff, AST, CPG, and failure facts: {{IMMUTABLE_FACTS}}
+Current support, rebuttals, and missing evidence: {{EVIDENCE}}
+Patch diff, buggy method, and failure context: {{CODE_AND_FAILURE}}
+
+REVISION RULES
+1. Use undercut when evidence weakens an inference; use
+   contradicted only when an immutable fact disproves it.
+2. New rebuttals target existing claims or inference relations
+   and are initially unresolved.
+3. Resolve missing evidence only when the required fact appears
+   in IMMUTABLE FACTS.
+4. ranking_boost requires a grounded medium/high rebuttal to be
+   undercut or contradicted, or a program-supported repair schema.
+5. promote_to_candidate additionally requires a medium/high
+   rebuttal to be contradicted and no new high-severity rebuttal.
+6. Otherwise, use no_change.
+
+OUTPUT JSON
+Return exactly one JSON object with:
+patch_uid;
+semantic_schema_candidates:
+  [{schema, status, confidence, grounding}];
+rebuttal_refinements:
+  [{rebuttal_id, original_status, new_status, severity,
+    reason, confidence, grounding}];
+new_rebuttals:
+  [{operator, target_id, severity, hypothesis, grounding}];
+missing_evidence_updates:
+  [{missing_id, new_status, criticality, reason, grounding}];
+suggested_action; action_confidence.
+
+Allowed values:
+Schema status: supported | unsupported | uncertain
+Rebuttal status: supported | undercut | contradicted | unresolved
+Missing-evidence status: resolved | unresolved
+Severity/confidence: low | medium | high
+Action: no_change | ranking_boost | promote_to_candidate

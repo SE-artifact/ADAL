@@ -1,0 +1,58 @@
+### Role
+
+You are a software engineering expert specializing in evidence-based patch assessment and defeasible reasoning. Your task is to objectively evaluate the "defeater handling quality" of the ADAL reasoning report keyed under "report_to_evaluate".
+
+### Task
+
+Based on the provided [Evaluation Criterion] and the available program evidence [input_evidence], assess how the report identifies, grounds, resolves, and retains uncertainty about objections to its patch assessment.
+
+You need to accomplish two tasks:
+
+1. Provide a concise, traceable justification for the score based only on the provided [Evaluation Criterion] and evidence.
+2. Provide the final integer score corresponding to the report from 1 to 5.
+
+### Evaluation Criterion
+
+Consider relevant rebuttals, undercutters, and missing evidence together. A rebuttal challenges a claim; an undercutter weakens the link between evidence and a claim without necessarily establishing the opposite claim. Factual contradiction and defeat by a higher-priority opposing argument are different. An objection or premise that cannot be established from the supplied artifacts must remain unresolved rather than being treated as disproved or satisfied. Evaluate these distinctions by their meaning, without requiring particular wording.
+
+* 5 points:
+    * Material objections visible in the supplied evidence are identified and connected to the claims or inferences they challenge.
+    * Acceptance, contradiction, undercutting, or priority-based defeat of each material objection is justified by relevant, traceable evidence; changes in the assessment follow from that evidence.
+    * Missing premises and unresolved objections remain explicit where the evidence is insufficient; neither unavailable facts nor an asserted final label are used to close these gaps.
+    * Revisions affect the relevant arguments consistently, and the resulting assessment reflects the surviving objections and stated assessment boundary.
+* 4 points:
+    * The main relevant objections and evidence gaps are addressed, with only minor omissions or imprecision in secondary objections.
+    * Most state changes and weakening of inferences have clear evidential support; minor ambiguity does not change the principal assessment.
+    * Important uncertainty is preserved, although a secondary limitation or its effect may not be explained fully.
+    * The final assessment is generally consistent with the objections that survive.
+* 3 points:
+    * The report addresses some relevant objections but overlooks or only partly examines others.
+    * Some objection states or revisions have incomplete grounding, or the distinction between contradicting an objection and weakening its inference is unclear.
+    * Some missing premises or unresolved risks are acknowledged, while others are closed too readily or not carried into the assessment.
+    * These weaknesses occasionally undermine subsequent arguments, although part of the defeater-handling process remains usable.
+* 2 points:
+    * Several material objections are omitted, dismissed without relevant evidence, or assigned states that conflict with the supplied evidence.
+    * The report repeatedly confuses unsupported objections, factual contradictions, undercutting, and priority-based defeat.
+    * Important evidence gaps are presented as resolved, or revisions fail to account for surviving counterevidence.
+    * These problems substantially undermine the reliability of the resulting assessment.
+* 1 point:
+    * The report largely ignores material objections, reverses their evidential meaning, or provides no meaningful examination of them.
+    * Defeater resolution depends on fabricated facts, circular reliance on the final label, or arbitrary changes to argument states.
+    * Major uncertainty is concealed or removed without evidence, and the conclusion disregards decisive surviving objections.
+    * The handling of defeaters invalidates the core assessment.
+
+Do not reward a larger number of objections, confident language, or a particular correct/incorrect label. A simple case may receive a high score when its relevant objections are handled appropriately and unsupported objections are not invented. Correctly retaining an unresolved objection can be better handling than claiming to resolve it without evidence. If the supplied evidence raises no material objection, assess the justification for that situation and the stated limits rather than demanding an artificial rebuttal.
+
+### Input Data
+{
+  "input_evidence": "...",
+  "report_to_evaluate": "..."
+}
+
+### Output Format Requirements
+
+Please strictly return your evaluation result in the following format:
+
+  <Reason for the given score.>
+
+  EVALUATION_SCORE: <an integer from 1 to 5>

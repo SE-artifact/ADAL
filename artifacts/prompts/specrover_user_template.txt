@@ -1,0 +1,20 @@
+An observed failure and a candidate patch are provided. The triggering test or the patch may encode an incomplete understanding of the defect.
+[Observed Failure]
+Failure message: {failure_message}
+Stack trace: {stack_trace}
+[Triggering Test] {triggering_test}
+[Buggy Code Context] {buggy_context}
+[Candidate Patch] {patch_diff}
+[Review Procedure]
+1. Determine whether the triggering test and failure information consistently identify the defective behavior.
+2. Determine whether the candidate patch addresses that behavior.
+3. Check whether the patch introduces a visible regression, excessive change, or unsupported behavior.
+4. Do not use information outside the supplied artifacts, and identify any unresolved evidence in the assessment.
+[Response]
+Return exactly one JSON object:
+{
+  "test_assessment": "<concise assessment of the failure message>",
+  "patch_assessment": "<concise assessment of the candidate patch>",
+  "label": "<correct or incorrect>"
+}
+The label must be exactly "correct" or "incorrect".

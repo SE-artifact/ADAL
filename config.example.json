@@ -1,0 +1,55 @@
+{
+  "paths": {
+    "gumtree": "",
+    "joern_parse": "",
+    "joern_export": "",
+    "artifact_root": "",
+    "model_path": "",
+    "input_path": "",
+    "output_path": ""
+  },
+  "models": {
+    "provider": "qwen3-14b",
+    "qwen_model": "Qwen3-14B",
+    "deepseek_model": "deepseek-chat",
+    "deepseek_endpoint": "https://api.deepseek.com/chat/completions",
+    "deepseek_api_key": "",
+    "openai_model": "gpt-4.1",
+    "openai_api_key": "",
+    "timeout_seconds": 60,
+    "max_retries": 3,
+    "temperature": 0.0,
+    "vllm_base_url": "http://localhost:8000/v1",
+    "vllm_api_key": "",
+    "qwen_enable_thinking": false,
+    "max_output_tokens": 4096
+  },
+  "analysis": {
+    "run_gumtree": true,
+    "run_joern": true,
+    "run_llm": true,
+    "random_seed": 43,
+    "static_timeout_seconds": 60
+  },
+  "aggregation": {
+    "learning_rate": "",
+    "max_iter": 180,
+    "max_leaf_nodes": 15,
+    "min_samples_leaf": 12,
+    "filter_l2": "",
+    "ranking_C": 0.8,
+    "max_pairs_per_pool": null,
+    "target_false_acceptance_rate": "",
+    "alpha_grid": [
+      0.0,
+      0.15,
+      0.3,
+      0.5,
+      0.75,
+      1.0,
+      1.35,
+      1.75,
+      2.25
+    ]
+  }
+}

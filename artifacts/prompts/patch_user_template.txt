@@ -1,0 +1,19 @@
+[Task]
+Determine whether the candidate patch fixes the observed failure while preserving the behavior implied by the available code context.
+[Triggering Test] {triggering_test}
+[Failure Message] {failure_message}
+[Stack Trace] {stack_trace}
+[Buggy Code Context] {buggy_context}
+[Candidate Patch] {patch_diff}
+[Assessment Requirements]
+1. Identify the behavior required by the triggering test and failure.
+2. Check whether the edit addresses the corresponding failure cause.
+3. Check for behavioral or interface violations visible in the context.
+4. Do not use information outside the supplied artifacts, and identify any unresolved evidence in the assessment.
+[Response]
+Return exactly one JSON object:
+{
+  "reason": "<concise assessment>",
+  "label": "<correct or incorrect>"
+}
+The label must be exactly "correct" or "incorrect".
